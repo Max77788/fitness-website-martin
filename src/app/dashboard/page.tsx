@@ -54,8 +54,6 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // For this MVP, we lookup by email query param
-        // In production, this would be protected by NextAuth session
         const email =
           new URLSearchParams(window.location.search).get("email") || "";
 
@@ -65,7 +63,7 @@ export default function DashboardPage() {
         const data = await res.json();
         setPayments(data.payments || []);
       } catch (e) {
-        setError("Impossible de charger vos réservations.");
+        setError("Unable to load your bookings.");
       } finally {
         setLoading(false);
       }
@@ -92,11 +90,9 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-neutral-950 py-12 px-6">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white">
-            Mon tableau de bord
-          </h1>
+          <h1 className="text-2xl font-bold text-white">My dashboard</h1>
           <p className="mt-2 text-neutral-400">
-            Gérez vos réservations et accédez à vos séances Zoom.
+            Manage your bookings and access your Zoom sessions.
           </p>
         </div>
 
@@ -112,16 +108,16 @@ export default function DashboardPage() {
             <CardContent className="py-12 text-center">
               <Video className="mx-auto h-12 w-12 text-neutral-600" />
               <h3 className="mt-4 text-lg font-medium text-white">
-                Aucune réservation
+                No bookings yet
               </h3>
               <p className="mt-2 text-sm text-neutral-400">
-                Vous n&apos;avez pas encore de séance réservée.
+                You haven&apos;t booked a session yet.
               </p>
               <Button
                 asChild
                 className="mt-6 bg-emerald-600 text-white hover:bg-emerald-500"
               >
-                <a href="/#pricing">Réserver une séance</a>
+                <a href="/#pricing">Book a session</a>
               </Button>
             </CardContent>
           </Card>
@@ -154,9 +150,7 @@ export default function DashboardPage() {
                           : "bg-neutral-700 text-neutral-300"
                       }
                     >
-                      {payment.status === "completed"
-                        ? "Payé"
-                        : payment.status}
+                      {payment.status === "completed" ? "Paid" : payment.status}
                     </Badge>
                   </div>
                 </CardHeader>
@@ -165,7 +159,7 @@ export default function DashboardPage() {
                   <div className="flex flex-wrap gap-4 text-sm text-neutral-400">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
-                      {new Date(payment.createdAt).toLocaleDateString("fr-FR")}
+                      {new Date(payment.createdAt).toLocaleDateString("en-US")}
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -179,13 +173,13 @@ export default function DashboardPage() {
 
                       <div className="space-y-4">
                         <h4 className="text-sm font-semibold text-white">
-                          Votre accès Zoom
+                          Your Zoom access
                         </h4>
 
                         <div className="rounded-lg bg-neutral-800 p-4 space-y-3">
                           <div className="flex items-center justify-between">
                             <span className="text-xs text-neutral-500 uppercase font-semibold">
-                              Code d&apos;accès unique
+                              Unique access code
                             </span>
                             <Button
                               variant="ghost"
@@ -199,11 +193,11 @@ export default function DashboardPage() {
                               className="text-neutral-400 hover:text-white"
                             >
                               {copiedId === payment.accessCode.id ? (
-                                "Copié !"
+                                "Copied!"
                               ) : (
                                 <>
                                   <Copy className="mr-1 h-3 w-3" />
-                                  Copier
+                                  Copy
                                 </>
                               )}
                             </Button>
@@ -224,17 +218,17 @@ export default function DashboardPage() {
                               rel="noopener noreferrer"
                             >
                               <ExternalLink className="mr-2 h-4 w-4" />
-                              Rejoindre la séance Zoom
+                              Join the Zoom session
                             </a>
                           </Button>
                         )}
 
                         {payment.accessCode.expiresAt && (
                           <p className="text-xs text-neutral-500 text-center">
-                            Expire le{" "}
+                            Expires on{" "}
                             {new Date(
                               payment.accessCode.expiresAt
-                            ).toLocaleDateString("fr-FR")}
+                            ).toLocaleDateString("en-US")}
                           </p>
                         )}
                       </div>

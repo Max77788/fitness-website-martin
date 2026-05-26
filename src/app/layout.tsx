@@ -9,9 +9,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Martin Fitness | Coach Fitness en Ligne",
+  title: "Martin Fitness | Online Personal Fitness Coach",
   description:
-    "Réservez vos séances de fitness en direct avec Martin. Cours personnalisés sur Zoom avec accès unique sécurisé.",
+    "Book your live online fitness sessions with Martin. Personalized Zoom classes with secure unique access.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
     !process.env.ZOOM_CLIENT_ID;
 
   return (
-    <html lang="fr" className={`${geistSans.variable} h-full antialiased`}>
+    <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
         {children}
         {isDemo && <DemoBanner />}

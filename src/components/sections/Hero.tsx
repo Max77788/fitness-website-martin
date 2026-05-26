@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Dumbbell, Users, Video, Shield } from "lucide-react";
+import { Users, Video, Shield } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -15,20 +15,20 @@ export default function Hero() {
           <div className="mb-8 flex justify-center">
             <div className="rounded-full bg-emerald-500/10 px-4 py-1.5 ring-1 ring-emerald-500/20">
               <span className="text-sm font-medium text-emerald-400">
-                Cours en direct sur Zoom
+                Live classes on Zoom
               </span>
             </div>
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Transformez votre corps avec{" "}
+            Transform your body with{" "}
             <span className="text-emerald-500">Martin</span>
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Coach fitness personnel en ligne. Réservez votre séance, payez en
-            toute sécurité et recevez immédiatement votre accès Zoom unique.
-            Des cours live, des résultats réels.
+            Online personal fitness coach. Book your session, pay securely and
+            receive your unique Zoom access instantly. Live classes, real
+            results.
           </p>
 
           <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -37,7 +37,7 @@ export default function Hero() {
               size="lg"
               className="bg-emerald-600 text-white hover:bg-emerald-500"
             >
-              <a href="#pricing">Réserver une séance</a>
+              <a href="#pricing">Book a session</a>
             </Button>
             <Button
               asChild
@@ -45,7 +45,7 @@ export default function Hero() {
               size="lg"
               className="border-neutral-700 text-white hover:bg-neutral-800"
             >
-              <a href="#how-it-works">Comment ça marche</a>
+              <a href="#how-it-works">How it works</a>
             </Button>
           </div>
         </div>
@@ -54,18 +54,18 @@ export default function Hero() {
           {[
             {
               icon: Video,
-              title: "Cours en direct",
-              desc: "Séances live sur Zoom avec interaction en temps réel",
+              title: "Live classes",
+              desc: "Live sessions on Zoom with real-time interaction",
             },
             {
               icon: Shield,
-              title: "Accès sécurisé",
-              desc: "Code Zoom unique et personnel pour chaque client",
+              title: "Secure access",
+              desc: "Unique personal Zoom code for each client",
             },
             {
               icon: Users,
-              title: "Suivi personnalisé",
-              desc: "Conseils et ajustements adaptés à votre niveau",
+              title: "Personalized follow-up",
+              desc: "Advice and adjustments tailored to your level",
             },
           ].map((feature) => (
             <div

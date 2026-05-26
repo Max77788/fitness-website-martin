@@ -21,9 +21,9 @@ export const isMockDb = () => usingMockDb;
 const staticPlans: Plan[] = [
   {
     id: "single",
-    name: "Séance Unique",
-    description: "Une séance de fitness en direct de 60 minutes avec accès Zoom personnel.",
-    price: 2500,
+    name: "Single Session",
+    description: "One 60-minute live fitness session with personal Zoom access.",
+    price: 2900,
     interval: "single",
     zoomMeetingId: null,
     createdAt: new Date(),
@@ -31,9 +31,9 @@ const staticPlans: Plan[] = [
   },
   {
     id: "weekly",
-    name: "Pack Hebdo",
-    description: "2 séances par semaine en direct avec accès Zoom personnel.",
-    price: 4500,
+    name: "Weekly Pack",
+    description: "2 live sessions per week with personal Zoom access.",
+    price: 4900,
     interval: "weekly",
     zoomMeetingId: null,
     createdAt: new Date(),
@@ -41,9 +41,9 @@ const staticPlans: Plan[] = [
   },
   {
     id: "monthly",
-    name: "Mensuel",
-    description: "Accès illimité aux séances en direct pendant 1 mois avec code Zoom personnel.",
-    price: 15000,
+    name: "Monthly",
+    description: "Unlimited live sessions for 1 month with personal Zoom code.",
+    price: 14900,
     interval: "monthly",
     zoomMeetingId: null,
     createdAt: new Date(),

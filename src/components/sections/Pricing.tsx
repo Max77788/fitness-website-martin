@@ -26,45 +26,45 @@ interface Plan {
 const plans: Plan[] = [
   {
     id: "single",
-    name: "Séance Unique",
-    description: "Idéal pour découvrir",
-    price: 25,
-    interval: "séance",
+    name: "Single Session",
+    description: "Perfect to get started",
+    price: 29,
+    interval: "session",
     features: [
-      "1 séance de 60 min en direct",
-      "Accès Zoom unique",
-      "Retour du coach",
-      "Validité 7 jours",
+      "1 live 60-min session",
+      "Unique Zoom access",
+      "Coach feedback",
+      "Valid for 7 days",
     ],
   },
   {
     id: "weekly",
-    name: "Pack Hebdo",
-    description: "Pour une routine régulière",
-    price: 45,
-    interval: "semaine",
+    name: "Weekly Pack",
+    description: "For a regular routine",
+    price: 49,
+    interval: "week",
     features: [
-      "2 séances par semaine",
-      "Accès Zoom unique",
-      "Suivi personnalisé",
-      "Chat avec le coach",
-      "Validité 7 jours",
+      "2 sessions per week",
+      "Unique Zoom access",
+      "Personalized follow-up",
+      "Chat with the coach",
+      "Valid for 7 days",
     ],
     popular: true,
   },
   {
     id: "monthly",
-    name: "Mensuel",
-    description: "Le plus complet",
-    price: 150,
-    interval: "mois",
+    name: "Monthly",
+    description: "The most complete",
+    price: 149,
+    interval: "month",
     features: [
-      "Séances illimitées",
-      "Accès Zoom unique",
-      "Programme personnalisé",
-      "Chat prioritaire",
-      "Replay 24h",
-      "Validité 30 jours",
+      "Unlimited sessions",
+      "Unique Zoom access",
+      "Personalized program",
+      "Priority chat",
+      "24h replay",
+      "Valid for 30 days",
     ],
   },
 ];
@@ -106,11 +106,11 @@ export default function Pricing() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Nos forfaits
+            Our plans
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-600">
-            Choisissez la formule qui correspond à vos objectifs. Tous les
-            forfaits incluent un accès Zoom personnel et sécurisé.
+            Choose the plan that matches your goals. All plans include a
+            personal and secure Zoom access.
           </p>
         </div>
 
@@ -127,7 +127,7 @@ export default function Pricing() {
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white">
-                    Le plus populaire
+                    Most popular
                   </span>
                 </div>
               )}
@@ -137,7 +137,7 @@ export default function Pricing() {
                 <p className="text-sm text-neutral-500">{plan.description}</p>
                 <div className="mt-4 flex items-baseline gap-x-1">
                   <span className="text-4xl font-bold tracking-tight text-neutral-900">
-                    {plan.price}€
+                    ${plan.price}
                   </span>
                   <span className="text-sm text-neutral-500">
                     /{plan.interval}
@@ -163,7 +163,7 @@ export default function Pricing() {
                       : "bg-neutral-900 text-white hover:bg-neutral-800"
                   }`}
                 >
-                  Choisir ce forfait
+                  Choose this plan
                 </Button>
               </CardContent>
             </Card>
@@ -175,18 +175,18 @@ export default function Pricing() {
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>
-              Réserver : {selectedPlan?.name} ({selectedPlan?.price}€)
+              Book: {selectedPlan?.name} (${selectedPlan?.price})
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Nom complet</Label>
+              <Label htmlFor="name">Full name</Label>
               <Input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Martin Dupont"
+                placeholder="John Smith"
               />
             </div>
 
@@ -197,7 +197,7 @@ export default function Pricing() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="martin@exemple.fr"
+                placeholder="john@example.com"
               />
             </div>
 
@@ -209,7 +209,7 @@ export default function Pricing() {
               {loading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : null}
-              Procéder au paiement
+              Proceed to payment
             </Button>
           </div>
         </DialogContent>

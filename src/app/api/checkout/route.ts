@@ -15,26 +15,23 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Plan not found" }, { status: 404 });
     }
 
-    // Upsert user
     const user = await prisma.user.upsert({
       where: { email },
       update: { name },
       create: { email, name },
     });
 
-    // Create payment record
     const payment = await prisma.payment.create({
       data: {
         userId: user.id,
         planId: plan.id,
         amount: plan.price,
-        currency: "eur",
+        currency: "usd",
         status: "pending",
       },
     });
 
     if (!isStripeConfigured) {
-      // Demo mode: simulate successful payment and redirect
       await prisma.payment.update({
         where: { id: payment.id },
         data: { status: "completed" },
@@ -48,7 +45,6 @@ export async function POST(req: NextRequest) {
         data: { stripeSessionId: demoSessionId },
       });
 
-      // Create a demo access code
       const code = `DEMO-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
       await prisma.accessCode.create({
         data: {
@@ -64,13 +60,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ url: `${appUrl}/success?session_id=${demoSessionId}` });
     }
 
-    // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
       customer_email: email,
       line_items: [
         {
           price_data: {
-            currency: "eur",
+            currency: "usd",
             product_data: {
               name: plan.name,
               description: plan.description || undefined,
@@ -90,7 +85,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Update payment with Stripe session ID
     await prisma.payment.update({
       where: { id: payment.id },
       data: { stripeSessionId: session.id },

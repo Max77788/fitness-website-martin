@@ -6,30 +6,30 @@ const steps = [
   {
     icon: Calendar,
     number: "01",
-    title: "Choisissez votre forfait",
+    title: "Choose your plan",
     description:
-      "Sélectionnez la formule qui vous convient : séance unique, pack hebdomadaire ou abonnement mensuel.",
+      "Select the plan that fits you best: single session, weekly pack, or monthly subscription.",
   },
   {
     icon: CreditCard,
     number: "02",
-    title: "Payez en ligne",
+    title: "Pay online",
     description:
-      "Paiement sécurisé par carte bancaire via notre partenaire Stripe. Aucun engagement caché.",
+      "Secure card payment through our partner Stripe. No hidden commitments.",
   },
   {
     icon: KeyRound,
     number: "03",
-    title: "Recevez votre accès",
+    title: "Get your access",
     description:
-      "Immédiatement après le paiement, recevez votre code d'accès Zoom personnel et unique.",
+      "Immediately after payment, receive your personal and unique Zoom access code.",
   },
   {
     icon: Dumbbell,
     number: "04",
-    title: "Rejoignez le cours",
+    title: "Join the class",
     description:
-      "Connectez-vous à l'heure du cours avec votre lien personnel. Le coach vous attend !",
+      "Log in at class time with your personal link. The coach is waiting for you!",
   },
 ];
 
@@ -39,11 +39,10 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Comment ça marche
+            How it works
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-600">
-            Quatre étapes simples pour accéder à vos séances de fitness en
-            direct.
+            Four simple steps to access your live fitness sessions.
           </p>
         </div>
 
@@ -55,7 +54,7 @@ export default function HowItWorks() {
                   <step.icon className="h-6 w-6" />
                 </div>
                 <span className="mt-4 text-xs font-bold uppercase tracking-wider text-emerald-600">
-                  Étape {step.number}
+                  Step {step.number}
                 </span>
                 <h3 className="mt-2 text-base font-semibold text-neutral-900">
                   {step.title}

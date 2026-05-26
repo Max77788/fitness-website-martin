@@ -14,7 +14,6 @@ export default function SignInPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // For this MVP, redirect to dashboard with email param
     window.location.href = `/dashboard?email=${encodeURIComponent(email)}`;
   };
 
@@ -31,7 +30,7 @@ export default function SignInPage() {
         <Card className="bg-neutral-900 border-neutral-800">
           <CardHeader>
             <CardTitle className="text-white text-center">
-              Accéder à mon compte
+              Access my account
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -45,7 +44,7 @@ export default function SignInPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="martin@exemple.fr"
+                  placeholder="john@example.com"
                   required
                   className="bg-neutral-800 border-neutral-700 text-white placeholder:text-neutral-500"
                 />
@@ -59,14 +58,14 @@ export default function SignInPage() {
                 {loading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : null}
-                Accéder
+                Access
               </Button>
             </form>
 
             <p className="mt-4 text-xs text-center text-neutral-500">
-              Pas encore de compte ? Réservez une séance sur la{" "}
+              No account yet? Book a session on the{" "}
               <a href="/" className="text-emerald-500 hover:underline">
-                page d&apos;accueil
+                homepage
               </a>
               .
             </p>

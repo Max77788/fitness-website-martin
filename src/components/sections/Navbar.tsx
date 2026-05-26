@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Dumbbell, Menu, X } from "lucide-react";
+import { Dumbbell, Menu } from "lucide-react";
 
 const navLinks = [
-  { label: "Accueil", href: "#" },
-  { label: "Comment ça marche", href: "#how-it-works" },
-  { label: "Tarifs", href: "#pricing" },
+  { label: "Home", href: "#" },
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -38,7 +38,7 @@ export default function Navbar() {
             size="sm"
             className="bg-emerald-600 text-white hover:bg-emerald-500"
           >
-            <a href="#pricing">Réserver</a>
+            <a href="#pricing">Book now</a>
           </Button>
         </div>
 
@@ -65,7 +65,7 @@ export default function Navbar() {
                 className="bg-emerald-600 text-white hover:bg-emerald-500"
               >
                 <a href="#pricing" onClick={() => setOpen(false)}>
-                  Réserver une séance
+                  Book a session
                 </a>
               </Button>
             </div>

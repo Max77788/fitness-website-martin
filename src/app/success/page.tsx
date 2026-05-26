@@ -43,10 +43,10 @@ function SuccessContent() {
           <CheckCircle className="h-8 w-8 text-emerald-500" />
         </div>
         <h1 className="mt-4 text-2xl font-bold text-white">
-          Paiement réussi !
+          Payment successful!
         </h1>
         <p className="mt-2 text-neutral-400">
-          Merci pour votre réservation. Voici votre accès Zoom personnel.
+          Thank you for your booking. Here is your personal Zoom access.
         </p>
       </div>
 
@@ -55,7 +55,7 @@ function SuccessContent() {
           <CardContent className="flex flex-col items-center py-12">
             <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
             <p className="mt-4 text-sm text-neutral-400">
-              Génération de votre accès sécurisé...
+              Generating your secure access...
             </p>
           </CardContent>
         </Card>
@@ -63,13 +63,13 @@ function SuccessContent() {
         <Card className="bg-neutral-900 border-neutral-800">
           <CardHeader>
             <CardTitle className="text-white text-lg">
-              Votre accès Zoom
+              Your Zoom access
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="rounded-lg bg-neutral-800 p-4 space-y-2">
               <p className="text-xs text-neutral-500 uppercase font-semibold">
-                Code d&apos;accès unique
+                Unique access code
               </p>
               <code className="block text-lg font-mono text-emerald-400 break-all">
                 {accessCode.code}
@@ -87,13 +87,13 @@ function SuccessContent() {
                   rel="noopener noreferrer"
                 >
                   <ExternalLink className="mr-2 h-4 w-4" />
-                  Rejoindre la séance Zoom
+                  Join the Zoom session
                 </a>
               </Button>
             )}
 
             <p className="text-xs text-neutral-500 text-center">
-              Cet accès est strictement personnel. Ne le partagez pas.
+              This access is strictly personal. Do not share it.
             </p>
           </CardContent>
         </Card>
@@ -101,14 +101,14 @@ function SuccessContent() {
         <Card className="bg-neutral-900 border-neutral-800">
           <CardContent className="py-8 text-center">
             <p className="text-neutral-400">
-              Votre accès sera disponible sous peu. Vous recevrez également un
-              email de confirmation.
+              Your access will be available shortly. You will also receive a
+              confirmation email.
             </p>
             <Button
               asChild
               className="mt-4 bg-emerald-600 text-white hover:bg-emerald-500"
             >
-              <a href="/dashboard">Voir mon tableau de bord</a>
+              <a href="/dashboard">Go to my dashboard</a>
             </Button>
           </CardContent>
         </Card>
@@ -126,9 +126,7 @@ export default function SuccessPage() {
             <Card className="bg-neutral-900 border-neutral-800">
               <CardContent className="flex flex-col items-center py-12">
                 <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
-                <p className="mt-4 text-sm text-neutral-400">
-                  Chargement...
-                </p>
+                <p className="mt-4 text-sm text-neutral-400">Loading...</p>
               </CardContent>
             </Card>
           </div>

@@ -13,33 +13,33 @@ export default function Footer() {
               <span className="text-lg font-bold">Martin Fitness</span>
             </a>
             <p className="mt-4 text-sm text-neutral-400">
-              Coach fitness personnel en ligne. Des séances en direct sur Zoom
-              pour atteindre vos objectifs.
+              Online personal fitness coach. Live sessions on Zoom to reach your
+              goals.
             </p>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold text-white">Contact</h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-400">
-              <li>Email : contact@martinfitness.fr</li>
-              <li>Tél : +33 6 00 00 00 00</li>
-              <li>WhatsApp : +33 6 00 00 00 00</li>
+              <li>Email: contact@martinfitness.com</li>
+              <li>Phone: +1 (555) 000-0000</li>
+              <li>WhatsApp: +1 (555) 000-0000</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Horaires</h3>
+            <h3 className="text-sm font-semibold text-white">Hours</h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-400">
-              <li>Lundi - Vendredi : 7h - 21h</li>
-              <li>Samedi : 9h - 17h</li>
-              <li>Dimanche : Cours enregistrés</li>
+              <li>Mon - Fri: 7am - 9pm EST</li>
+              <li>Saturday: 9am - 5pm EST</li>
+              <li>Sunday: Recorded classes</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 border-t border-neutral-800 pt-8 text-center">
           <p className="text-xs text-neutral-500">
-            &copy; {new Date().getFullYear()} Martin Fitness. Tous droits réservés.
+            &copy; {new Date().getFullYear()} Martin Fitness. All rights reserved.
           </p>
         </div>
       </div>

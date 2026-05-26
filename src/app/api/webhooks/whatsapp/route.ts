@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
-// WhatsApp Business API webhook verification
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const mode = searchParams.get("hub.mode");
@@ -15,7 +14,6 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ error: "Verification failed" }, { status: 403 });
 }
 
-// Handle incoming WhatsApp messages
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -32,7 +30,6 @@ export async function POST(req: NextRequest) {
     const phone = message.from;
     const text = message.text?.body || "";
 
-    // Find or create lead
     let lead = await prisma.whatsAppLead.findFirst({
       where: { phone },
     });
@@ -56,20 +53,19 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Simple automation responses
     const lowerText = text.toLowerCase();
     let responseText = "";
 
-    if (lowerText.includes("bonjour") || lowerText.includes("salut") || lowerText.includes("hello") || lowerText.includes("hi")) {
-      responseText = `Bonjour ! Je suis Martin, votre coach fitness personnel. Comment puis-je vous aider aujourd'hui ?\n\n1. Informations sur les cours\n2. Tarifs et abonnements\n3. Réserver une séance\n4. Parler à un coach`;
-    } else if (lowerText.includes("prix") || lowerText.includes("tarif") || lowerText.includes("coût") || lowerText.includes("combien")) {
-      responseText = `Nos forfaits :\n\n🏋️ Séance unique : 25€\n📅 Pack hebdomadaire (2 séances) : 45€\n💪 Abonnement mensuel illimité : 150€\n\nTous nos cours sont en direct sur Zoom avec un accès personnel unique.\n\nPour réserver : ${process.env.APP_URL || "https://martin-fitness.vercel.app"}`;
-    } else if (lowerText.includes("cours") || lowerText.includes("séance") || lowerText.includes("type") || lowerText.includes("quoi")) {
-      responseText = `Nos cours en direct sur Zoom :\n\n💪 Musculation & Force\n🏃 HIIT & Cardio\n🧘 Yoga & Mobilité\n🥊 Boxe Fitness\n\nChaque séance dure 45-60 min. Vous recevez un lien Zoom personnel après paiement.\n\nPour réserver : ${process.env.APP_URL || "https://martin-fitness.vercel.app"}`;
-    } else if (lowerText.includes("réserver") || lowerText.includes("book") || lowerText.includes("acheter") || lowerText.includes("payer")) {
-      responseText = `Parfait ! Réservez votre séance ici :\n${process.env.APP_URL || "https://martin-fitness.vercel.app"}\n\nAprès le paiement, vous recevrez immédiatement votre code d'accès Zoom personnel.`;
+    if (lowerText.includes("hello") || lowerText.includes("hi") || lowerText.includes("hey")) {
+      responseText = `Hi! I'm Martin, your personal fitness coach. How can I help you today?\n\n1. Class info\n2. Pricing & subscriptions\n3. Book a session\n4. Talk to a coach`;
+    } else if (lowerText.includes("price") || lowerText.includes("cost") || lowerText.includes("how much") || lowerText.includes("pricing")) {
+      responseText = `Our plans:\n\n🏋️ Single session : $29\n📅 Weekly pack (2 sessions) : $49\n💪 Monthly unlimited : $149\n\nAll classes are live on Zoom with a unique personal access.\n\nTo book : ${process.env.APP_URL || "https://martin-fitness.vercel.app"}`;
+    } else if (lowerText.includes("class") || lowerText.includes("session") || lowerText.includes("type") || lowerText.includes("what")) {
+      responseText = `Our live Zoom classes:\n\n💪 Strength & Muscle\n🏃 HIIT & Cardio\n🧘 Yoga & Mobility\n🥊 Boxing Fitness\n\nEach session lasts 45-60 min. You get a personal Zoom link after payment.\n\nTo book : ${process.env.APP_URL || "https://martin-fitness.vercel.app"}`;
+    } else if (lowerText.includes("book") || lowerText.includes("buy") || lowerText.includes("pay") || lowerText.includes("reserve")) {
+      responseText = `Great! Book your session here:\n${process.env.APP_URL || "https://martin-fitness.vercel.app"}\n\nAfter payment, you'll immediately receive your personal Zoom access code.`;
     } else {
-      responseText = `Merci pour votre message ! Pour réserver une séance ou consulter nos tarifs, visitez notre site :\n${process.env.APP_URL || "https://martin-fitness.vercel.app"}\n\nSinon, je vous invite à nous contacter par email : contact@martinfitness.fr`;
+      responseText = `Thanks for your message! To book a session or check our pricing, visit our website:\n${process.env.APP_URL || "https://martin-fitness.vercel.app"}\n\nOtherwise, feel free to email us at contact@martinfitness.com`;
     }
 
     console.log(`WhatsApp response to ${phone}: ${responseText}`);
