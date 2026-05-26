@@ -6,9 +6,23 @@ import { Users, Video, Shield } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-black py-32 sm:py-40 lg:py-48">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-black to-black" />
-      </div>
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/videos/hero.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/70" />
+
+      {/* Subtle radial gradient accent */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
@@ -24,7 +38,7 @@ export default function Hero() {
             Transform your body with live coaching
           </h1>
 
-          <p className="mt-8 text-lg leading-8 text-neutral-400 sm:text-xl">
+          <p className="mt-8 text-lg leading-8 text-neutral-300 sm:text-xl">
             Online personal fitness coach. Book your session, pay securely and
             receive your unique Zoom access instantly. Live classes, real
             results.
@@ -77,7 +91,7 @@ export default function Hero() {
               <h3 className="mt-4 text-sm font-semibold text-white">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-sm text-neutral-500">{feature.desc}</p>
+              <p className="mt-2 text-sm text-neutral-400">{feature.desc}</p>
             </div>
           ))}
         </div>
