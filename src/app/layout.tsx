@@ -9,9 +9,9 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Martin Fitness | Online Personal Fitness Coach",
+  title: "FitLive | Online Personal Fitness Coach",
   description:
-    "Book your live online fitness sessions with Martin. Personalized Zoom classes with secure unique access.",
+    "Book your live online fitness sessions. Personalized Zoom classes with secure unique access.",
 };
 
 export default function RootLayout({

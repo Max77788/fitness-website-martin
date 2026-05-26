@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <a href="#" className="flex items-center gap-2 text-white">
               <Dumbbell className="h-6 w-6 text-emerald-500" />
-              <span className="text-lg font-bold">Martin Fitness</span>
+              <span className="text-lg font-bold">FitLive</span>
             </a>
             <p className="mt-4 text-sm text-neutral-400">
               Online personal fitness coach. Live sessions on Zoom to reach your
@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-white">Contact</h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-400">
-              <li>Email: contact@martinfitness.com</li>
+              <li>Email: contact@fitlivecoaching.com</li>
               <li>Phone: +1 (555) 000-0000</li>
               <li>WhatsApp: +1 (555) 000-0000</li>
             </ul>
@@ -39,7 +39,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-neutral-800 pt-8 text-center">
           <p className="text-xs text-neutral-500">
-            &copy; {new Date().getFullYear()} Martin Fitness. All rights reserved.
+            &copy; {new Date().getFullYear()} FitLive. All rights reserved.
           </p>
         </div>
       </div>

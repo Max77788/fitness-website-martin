@@ -21,8 +21,7 @@ export default function Hero() {
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Transform your body with{" "}
-            <span className="text-emerald-500">Martin</span>
+            Transform your body with live coaching
           </h1>
 
           <p className="mt-6 text-lg leading-8 text-neutral-300">
@@ -43,7 +42,7 @@ export default function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="border-neutral-700 text-white hover:bg-neutral-800"
+              className="border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
             >
               <a href="#how-it-works">How it works</a>
             </Button>

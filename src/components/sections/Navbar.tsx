@@ -20,7 +20,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <a href="#" className="flex items-center gap-2 text-white">
           <Dumbbell className="h-6 w-6 text-emerald-500" />
-          <span className="text-lg font-bold">Martin Fitness</span>
+          <span className="text-lg font-bold">FitLive</span>
         </a>
 
         <div className="hidden md:flex md:items-center md:gap-8">

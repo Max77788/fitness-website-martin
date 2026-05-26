@@ -25,7 +25,7 @@ export default function WhatsAppCTA() {
               className="bg-white text-emerald-700 hover:bg-emerald-50"
             >
               <a
-                href="https://wa.me/10000000000?text=Hi%20Martin%2C%20I'd%20like%20info%20about%20your%20classes"
+                href="https://wa.me/10000000000?text=Hi%2C%20I'd%20like%20info%20about%20your%20classes"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -23,7 +23,7 @@ export default function SignInPage() {
         <div className="flex justify-center mb-8">
           <a href="/" className="flex items-center gap-2 text-white">
             <Dumbbell className="h-8 w-8 text-emerald-500" />
-            <span className="text-2xl font-bold">Martin Fitness</span>
+            <span className="text-2xl font-bold">FitLive</span>
           </a>
         </div>
 
