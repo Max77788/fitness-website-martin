@@ -39,8 +39,8 @@ function SuccessContent() {
   return (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10">
-          <CheckCircle className="h-8 w-8 text-emerald-500" />
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
+          <CheckCircle className="h-8 w-8 text-white" />
         </div>
         <h1 className="mt-4 text-2xl font-bold text-white">
           Payment successful!
@@ -51,27 +51,27 @@ function SuccessContent() {
       </div>
 
       {loading ? (
-        <Card className="bg-neutral-900 border-neutral-800">
+        <Card className="bg-[#0A0A0A] border-white/10">
           <CardContent className="flex flex-col items-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
+            <Loader2 className="h-8 w-8 animate-spin text-white" />
             <p className="mt-4 text-sm text-neutral-400">
               Generating your secure access...
             </p>
           </CardContent>
         </Card>
       ) : accessCode ? (
-        <Card className="bg-neutral-900 border-neutral-800">
+        <Card className="bg-[#0A0A0A] border-white/10">
           <CardHeader>
             <CardTitle className="text-white text-lg">
               Your Zoom access
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="rounded-lg bg-neutral-800 p-4 space-y-2">
+            <div className="rounded-lg bg-black border border-white/10 p-4 space-y-2">
               <p className="text-xs text-neutral-500 uppercase font-semibold">
                 Unique access code
               </p>
-              <code className="block text-lg font-mono text-emerald-400 break-all">
+              <code className="block text-lg font-mono text-white break-all">
                 {accessCode.code}
               </code>
             </div>
@@ -79,7 +79,7 @@ function SuccessContent() {
             {accessCode.zoomJoinUrl && (
               <Button
                 asChild
-                className="w-full bg-emerald-600 text-white hover:bg-emerald-500"
+                className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
               >
                 <a
                   href={accessCode.zoomJoinUrl}
@@ -98,7 +98,7 @@ function SuccessContent() {
           </CardContent>
         </Card>
       ) : (
-        <Card className="bg-neutral-900 border-neutral-800">
+        <Card className="bg-[#0A0A0A] border-white/10">
           <CardContent className="py-8 text-center">
             <p className="text-neutral-400">
               Your access will be available shortly. You will also receive a
@@ -106,7 +106,7 @@ function SuccessContent() {
             </p>
             <Button
               asChild
-              className="mt-4 bg-emerald-600 text-white hover:bg-emerald-500"
+              className="mt-4 bg-white text-black hover:bg-neutral-200 rounded-full"
             >
               <a href="/dashboard">Go to my dashboard</a>
             </Button>
@@ -119,13 +119,13 @@ function SuccessContent() {
 
 export default function SuccessPage() {
   return (
-    <div className="min-h-screen bg-neutral-950 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-black flex items-center justify-center px-6 py-12">
       <Suspense
         fallback={
           <div className="w-full max-w-md">
-            <Card className="bg-neutral-900 border-neutral-800">
+            <Card className="bg-[#0A0A0A] border-white/10">
               <CardContent className="flex flex-col items-center py-12">
-                <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
+                <Loader2 className="h-8 w-8 animate-spin text-white" />
                 <p className="mt-4 text-sm text-neutral-400">Loading...</p>
               </CardContent>
             </Card>

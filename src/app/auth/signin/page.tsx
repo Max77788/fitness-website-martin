@@ -18,16 +18,16 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-black flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-sm">
         <div className="flex justify-center mb-8">
           <a href="/" className="flex items-center gap-2 text-white">
-            <Dumbbell className="h-8 w-8 text-emerald-500" />
-            <span className="text-2xl font-bold">FitLive</span>
+            <Dumbbell className="h-8 w-8 text-white" />
+            <span className="text-2xl font-bold tracking-tight">FitLive</span>
           </a>
         </div>
 
-        <Card className="bg-neutral-900 border-neutral-800">
+        <Card className="bg-[#0A0A0A] border-white/10">
           <CardHeader>
             <CardTitle className="text-white text-center">
               Access my account
@@ -46,14 +46,14 @@ export default function SignInPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="john@example.com"
                   required
-                  className="bg-neutral-800 border-neutral-700 text-white placeholder:text-neutral-500"
+                  className="border-white/10 bg-black text-white placeholder:text-neutral-600"
                 />
               </div>
 
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-emerald-600 text-white hover:bg-emerald-500"
+                className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
               >
                 {loading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -64,7 +64,7 @@ export default function SignInPage() {
 
             <p className="mt-4 text-xs text-center text-neutral-500">
               No account yet? Book a session on the{" "}
-              <a href="/" className="text-emerald-500 hover:underline">
+              <a href="/" className="text-white hover:underline">
                 homepage
               </a>
               .

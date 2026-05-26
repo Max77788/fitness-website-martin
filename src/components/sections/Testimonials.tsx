@@ -41,13 +41,13 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-neutral-950 py-24 sm:py-32">
+    <section className="bg-black py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             What our clients say
           </h2>
-          <p className="mt-6 text-lg leading-8 text-neutral-400">
+          <p className="mt-6 text-lg leading-8 text-neutral-500">
             Real people, real results. No stock photos, no fake reviews — just
             honest feedback from people who showed up.
           </p>
@@ -57,26 +57,26 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="mb-6 break-inside-avoid rounded-2xl border border-neutral-800 bg-neutral-900 p-6"
+              className="mb-6 break-inside-avoid rounded-2xl border border-white/10 bg-[#0A0A0A] p-6"
             >
               <div className="flex items-center gap-1">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="h-4 w-4 fill-amber-400 text-amber-400"
+                    className="h-4 w-4 fill-white text-white"
                   />
                 ))}
               </div>
-              <p className="mt-4 text-sm leading-6 text-neutral-300">
+              <p className="mt-4 text-sm leading-6 text-neutral-400">
                 &ldquo;{t.body}&rdquo;
               </p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
                   {t.name.charAt(0)}
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-emerald-500">{t.role}</p>
+                  <p className="text-xs text-neutral-500">{t.role}</p>
                 </div>
               </div>
             </div>

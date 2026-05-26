@@ -80,14 +80,14 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-white" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950 py-12 px-6">
+    <div className="min-h-screen bg-black py-12 px-6">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-white">My dashboard</h1>
@@ -104,7 +104,7 @@ export default function DashboardPage() {
         )}
 
         {payments.length === 0 ? (
-          <Card className="bg-neutral-900 border-neutral-800">
+          <Card className="bg-[#0A0A0A] border-white/10">
             <CardContent className="py-12 text-center">
               <Video className="mx-auto h-12 w-12 text-neutral-600" />
               <h3 className="mt-4 text-lg font-medium text-white">
@@ -115,7 +115,7 @@ export default function DashboardPage() {
               </p>
               <Button
                 asChild
-                className="mt-6 bg-emerald-600 text-white hover:bg-emerald-500"
+                className="mt-6 bg-white text-black hover:bg-neutral-200 rounded-full"
               >
                 <a href="/#pricing">Book a session</a>
               </Button>
@@ -126,7 +126,7 @@ export default function DashboardPage() {
             {payments.map((payment) => (
               <Card
                 key={payment.id}
-                className="bg-neutral-900 border-neutral-800"
+                className="bg-[#0A0A0A] border-white/10"
               >
                 <CardHeader>
                   <div className="flex items-center justify-between">
@@ -146,8 +146,8 @@ export default function DashboardPage() {
                       }
                       className={
                         payment.status === "completed"
-                          ? "bg-emerald-600 text-white"
-                          : "bg-neutral-700 text-neutral-300"
+                          ? "bg-white text-black"
+                          : "bg-white/10 text-neutral-300"
                       }
                     >
                       {payment.status === "completed" ? "Paid" : payment.status}
@@ -169,14 +169,14 @@ export default function DashboardPage() {
 
                   {payment.accessCode && (
                     <>
-                      <Separator className="bg-neutral-800" />
+                      <Separator className="bg-white/10" />
 
                       <div className="space-y-4">
                         <h4 className="text-sm font-semibold text-white">
                           Your Zoom access
                         </h4>
 
-                        <div className="rounded-lg bg-neutral-800 p-4 space-y-3">
+                        <div className="rounded-lg bg-black border border-white/10 p-4 space-y-3">
                           <div className="flex items-center justify-between">
                             <span className="text-xs text-neutral-500 uppercase font-semibold">
                               Unique access code
@@ -202,7 +202,7 @@ export default function DashboardPage() {
                               )}
                             </Button>
                           </div>
-                          <code className="block text-sm font-mono text-emerald-400 break-all">
+                          <code className="block text-sm font-mono text-white break-all">
                             {payment.accessCode.code}
                           </code>
                         </div>
@@ -210,7 +210,7 @@ export default function DashboardPage() {
                         {payment.accessCode.zoomJoinUrl && (
                           <Button
                             asChild
-                            className="w-full bg-emerald-600 text-white hover:bg-emerald-500"
+                            className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
                           >
                             <a
                               href={payment.accessCode.zoomJoinUrl}

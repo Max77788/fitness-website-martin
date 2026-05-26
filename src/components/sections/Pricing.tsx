@@ -102,13 +102,13 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pricing" className="bg-white py-24 sm:py-32">
+    <section id="pricing" className="bg-black py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             Our plans
           </h2>
-          <p className="mt-6 text-lg leading-8 text-neutral-600">
+          <p className="mt-6 text-lg leading-8 text-neutral-500">
             Choose the plan that matches your goals. All plans include a
             personal and secure Zoom access.
           </p>
@@ -118,25 +118,25 @@ export default function Pricing() {
           {plans.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative flex flex-col ${
+              className={`relative flex flex-col border-white/10 bg-[#0A0A0A] ${
                 plan.popular
-                  ? "border-emerald-600 ring-1 ring-emerald-600"
-                  : "border-neutral-200"
+                  ? "ring-1 ring-white/20"
+                  : ""
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-white">
+                  <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-black">
                     Most popular
                   </span>
                 </div>
               )}
 
               <CardHeader>
-                <CardTitle className="text-xl">{plan.name}</CardTitle>
+                <CardTitle className="text-xl text-white">{plan.name}</CardTitle>
                 <p className="text-sm text-neutral-500">{plan.description}</p>
                 <div className="mt-4 flex items-baseline gap-x-1">
-                  <span className="text-4xl font-bold tracking-tight text-neutral-900">
+                  <span className="text-4xl font-bold tracking-tight text-white">
                     ${plan.price}
                   </span>
                   <span className="text-sm text-neutral-500">
@@ -146,10 +146,10 @@ export default function Pricing() {
               </CardHeader>
 
               <CardContent className="flex flex-1 flex-col">
-                <ul className="space-y-3 text-sm leading-6 text-neutral-600">
+                <ul className="space-y-3 text-sm leading-6 text-neutral-400">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <Check className="h-5 w-5 flex-shrink-0 text-emerald-600" />
+                      <Check className="h-5 w-5 flex-shrink-0 text-white" />
                       {feature}
                     </li>
                   ))}
@@ -157,10 +157,10 @@ export default function Pricing() {
 
                 <Button
                   onClick={() => setSelectedPlan(plan)}
-                  className={`mt-8 w-full ${
+                  className={`mt-8 w-full rounded-full ${
                     plan.popular
-                      ? "bg-emerald-600 text-white hover:bg-emerald-500"
-                      : "bg-neutral-900 text-white hover:bg-neutral-800"
+                      ? "bg-white text-black hover:bg-neutral-200"
+                      : "bg-white/10 text-white hover:bg-white/20"
                   }`}
                 >
                   Choose this plan
@@ -172,39 +172,41 @@ export default function Pricing() {
       </div>
 
       <Dialog open={!!selectedPlan} onOpenChange={() => setSelectedPlan(null)}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md border-white/10 bg-[#0A0A0A]">
           <DialogHeader>
-            <DialogTitle>
+            <DialogTitle className="text-white">
               Book: {selectedPlan?.name} (${selectedPlan?.price})
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Full name</Label>
+              <Label htmlFor="name" className="text-neutral-300">Full name</Label>
               <Input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="John Smith"
+                className="border-white/10 bg-black text-white placeholder:text-neutral-600"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-neutral-300">Email</Label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
+                className="border-white/10 bg-black text-white placeholder:text-neutral-600"
               />
             </div>
 
             <Button
               onClick={handleCheckout}
               disabled={loading || !email || !name}
-              className="w-full bg-emerald-600 text-white hover:bg-emerald-500"
+              className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
             >
               {loading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
