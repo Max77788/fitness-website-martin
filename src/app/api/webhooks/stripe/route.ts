@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
-import { prisma } from "@/lib/prisma";
+import { stripe, isStripeConfigured } from "@/lib/stripe";
+import { prisma } from "@/lib/db";
 import { addZoomRegistrant } from "@/lib/zoom";
 import { randomBytes } from "crypto";
 
 export async function POST(req: NextRequest) {
+  if (!isStripeConfigured) {
+    return NextResponse.json({ received: true, demo: true });
+  }
+
   const payload = await req.text();
   const signature = req.headers.get("stripe-signature")!;
 

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
-import { prisma } from "@/lib/prisma";
+import { stripe, isStripeConfigured } from "@/lib/stripe";
+import { prisma } from "@/lib/db";
 
 export async function POST(req: NextRequest) {
   try {
@@ -33,6 +33,37 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    if (!isStripeConfigured) {
+      // Demo mode: simulate successful payment and redirect
+      await prisma.payment.update({
+        where: { id: payment.id },
+        data: { status: "completed" },
+      });
+
+      const appUrl = process.env.APP_URL || "http://localhost:3000";
+      const demoSessionId = `demo_${payment.id}`;
+
+      await prisma.payment.update({
+        where: { id: payment.id },
+        data: { stripeSessionId: demoSessionId },
+      });
+
+      // Create a demo access code
+      const code = `DEMO-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+      await prisma.accessCode.create({
+        data: {
+          userId: user.id,
+          paymentId: payment.id,
+          code,
+          zoomJoinUrl: "https://zoom.us/j/123456789?pwd=demo",
+          zoomMeetingId: "123456789",
+          expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        },
+      });
+
+      return NextResponse.json({ url: `${appUrl}/success?session_id=${demoSessionId}` });
+    }
+
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
       customer_email: email,
@@ -50,8 +81,8 @@ export async function POST(req: NextRequest) {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.APP_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.APP_URL}/`,
+      success_url: `${process.env.APP_URL || "http://localhost:3000"}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.APP_URL || "http://localhost:3000"}/`,
       metadata: {
         paymentId: payment.id,
         userId: user.id,

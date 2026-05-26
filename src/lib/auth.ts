@@ -1,9 +1,9 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { prisma } from "./prisma";
-import bcrypt from "bcryptjs";
+import { prisma } from "./db";
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET || "fallback-secret-for-demo-only-change-in-production",
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.email) return null;
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
@@ -20,9 +20,6 @@ export const authOptions: NextAuthOptions = {
 
         if (!user) return null;
 
-        const isValid = await bcrypt.compare(credentials.password, "dummy");
-        // For this MVP, we'll use a simpler auth flow via magic links or just email
-        // Since we don't store passwords in schema, we'll auto-create/find user by email
         return { id: user.id, email: user.email, name: user.name };
       },
     }),
@@ -39,7 +36,7 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (token) {
-        session.user.id = token.id as string;
+        (session.user as any).id = token.id as string;
       }
       return session;
     },

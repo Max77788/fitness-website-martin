@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/db";
 
 // WhatsApp Business API webhook verification
 export async function GET(req: NextRequest) {
@@ -20,8 +20,6 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Extract message data (format depends on provider: Twilio, Meta, etc.)
-    // This is a generic handler that works with Meta WhatsApp Business API format
     const entry = body.entry?.[0];
     const change = entry?.changes?.[0];
     const value = change?.value;
@@ -35,12 +33,12 @@ export async function POST(req: NextRequest) {
     const text = message.text?.body || "";
 
     // Find or create lead
-    let lead = await prisma.whatsappLead.findFirst({
+    let lead = await prisma.whatsAppLead.findFirst({
       where: { phone },
     });
 
     if (!lead) {
-      lead = await prisma.whatsappLead.create({
+      lead = await prisma.whatsAppLead.create({
         data: {
           phone,
           lastMessage: text,
@@ -48,7 +46,7 @@ export async function POST(req: NextRequest) {
         },
       });
     } else {
-      lead = await prisma.whatsappLead.update({
+      lead = await prisma.whatsAppLead.update({
         where: { id: lead.id },
         data: {
           lastMessage: text,
@@ -65,17 +63,15 @@ export async function POST(req: NextRequest) {
     if (lowerText.includes("bonjour") || lowerText.includes("salut") || lowerText.includes("hello") || lowerText.includes("hi")) {
       responseText = `Bonjour ! Je suis Martin, votre coach fitness personnel. Comment puis-je vous aider aujourd'hui ?\n\n1. Informations sur les cours\n2. Tarifs et abonnements\n3. Réserver une séance\n4. Parler à un coach`;
     } else if (lowerText.includes("prix") || lowerText.includes("tarif") || lowerText.includes("coût") || lowerText.includes("combien")) {
-      responseText = `Nos forfaits :\n\n🏋️ Séance unique : 25€\n📅 Pack hebdomadaire (2 séances) : 45€\n💪 Abonnement mensuel illimité : 150€\n\nTous nos cours sont en direct sur Zoom avec un accès personnel unique.\n\nPour réserver : ${process.env.APP_URL}`;
+      responseText = `Nos forfaits :\n\n🏋️ Séance unique : 25€\n📅 Pack hebdomadaire (2 séances) : 45€\n💪 Abonnement mensuel illimité : 150€\n\nTous nos cours sont en direct sur Zoom avec un accès personnel unique.\n\nPour réserver : ${process.env.APP_URL || "https://martin-fitness.vercel.app"}`;
     } else if (lowerText.includes("cours") || lowerText.includes("séance") || lowerText.includes("type") || lowerText.includes("quoi")) {
-      responseText = `Nos cours en direct sur Zoom :\n\n💪 Musculation & Force\n🏃 HIIT & Cardio\n🧘 Yoga & Mobilité\n🥊 Boxe Fitness\n\nChaque séance dure 45-60 min. Vous recevez un lien Zoom personnel après paiement.\n\nPour réserver : ${process.env.APP_URL}`;
+      responseText = `Nos cours en direct sur Zoom :\n\n💪 Musculation & Force\n🏃 HIIT & Cardio\n🧘 Yoga & Mobilité\n🥊 Boxe Fitness\n\nChaque séance dure 45-60 min. Vous recevez un lien Zoom personnel après paiement.\n\nPour réserver : ${process.env.APP_URL || "https://martin-fitness.vercel.app"}`;
     } else if (lowerText.includes("réserver") || lowerText.includes("book") || lowerText.includes("acheter") || lowerText.includes("payer")) {
-      responseText = `Parfait ! Réservez votre séance ici :\n${process.env.APP_URL}\n\nAprès le paiement, vous recevrez immédiatement votre code d'accès Zoom personnel.`;
+      responseText = `Parfait ! Réservez votre séance ici :\n${process.env.APP_URL || "https://martin-fitness.vercel.app"}\n\nAprès le paiement, vous recevrez immédiatement votre code d'accès Zoom personnel.`;
     } else {
-      responseText = `Merci pour votre message ! Pour réserver une séance ou consulter nos tarifs, visitez notre site :\n${process.env.APP_URL}\n\nSinon, je vous invite à nous contacter par email : contact@martinfitness.fr`;
+      responseText = `Merci pour votre message ! Pour réserver une séance ou consulter nos tarifs, visitez notre site :\n${process.env.APP_URL || "https://martin-fitness.vercel.app"}\n\nSinon, je vous invite à nous contacter par email : contact@martinfitness.fr`;
     }
 
-    // In production, you would send the response back via WhatsApp API
-    // For now, we store the conversation and return the intended response
     console.log(`WhatsApp response to ${phone}: ${responseText}`);
 
     return NextResponse.json({
