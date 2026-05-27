@@ -5,7 +5,7 @@ import { Users, Video, Shield } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-black py-32 sm:py-40 lg:py-48">
+    <section className="relative overflow-hidden py-32 sm:py-40 lg:py-48">
       {/* Background video */}
       <video
         autoPlay
@@ -14,9 +14,8 @@ export default function Hero() {
         playsInline
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
-      </video>
+        src="/videos/hero.mp4"
+      />
 
       {/* Subtle overlay for text readability */}
       <div className="absolute inset-0 bg-black/40" />
