@@ -118,25 +118,25 @@ export default function Pricing() {
           {plans.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative flex flex-col border-white/10 bg-[#0A0A0A] ${
+              className={`relative flex flex-col ${
                 plan.popular
-                  ? "ring-1 ring-white/20 overflow-visible"
-                  : ""
+                  ? "bg-white border-black/10 ring-1 ring-black/10 overflow-visible"
+                  : "border-white/10 bg-[#0A0A0A]"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-black">
+                  <span className="inline-flex items-center rounded-full bg-black px-3 py-1 text-xs font-medium text-white">
                     Most popular
                   </span>
                 </div>
               )}
 
               <CardHeader>
-                <CardTitle className="text-xl text-white">{plan.name}</CardTitle>
-                <p className="text-sm text-neutral-500">{plan.description}</p>
+                <CardTitle className={`text-xl ${plan.popular ? "text-black" : "text-white"}`}>{plan.name}</CardTitle>
+                <p className={`text-sm ${plan.popular ? "text-neutral-500" : "text-neutral-500"}`}>{plan.description}</p>
                 <div className="mt-4 flex items-baseline gap-x-1">
-                  <span className="text-4xl font-bold tracking-tight text-white">
+                  <span className={`text-4xl font-bold tracking-tight ${plan.popular ? "text-black" : "text-white"}`}>
                     ${plan.price}
                   </span>
                   <span className="text-sm text-neutral-500">
@@ -146,10 +146,10 @@ export default function Pricing() {
               </CardHeader>
 
               <CardContent className="flex flex-1 flex-col">
-                <ul className="space-y-3 text-sm leading-6 text-neutral-400">
+                <ul className={`space-y-3 text-sm leading-6 ${plan.popular ? "text-neutral-600" : "text-neutral-400"}`}>
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <Check className="h-5 w-5 flex-shrink-0 text-white" />
+                      <Check className={`h-5 w-5 flex-shrink-0 ${plan.popular ? "text-black" : "text-white"}`} />
                       {feature}
                     </li>
                   ))}
@@ -159,7 +159,7 @@ export default function Pricing() {
                   onClick={() => setSelectedPlan(plan)}
                   className={`mt-8 w-full rounded-full ${
                     plan.popular
-                      ? "bg-white text-black hover:bg-neutral-200"
+                      ? "bg-black text-white hover:bg-neutral-800"
                       : "bg-white/10 text-white hover:bg-white/20"
                   }`}
                 >
