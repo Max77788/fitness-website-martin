@@ -18,8 +18,8 @@ export default function Hero() {
         <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/70" />
+      {/* Subtle overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Subtle radial gradient accent */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
