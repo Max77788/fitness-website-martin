@@ -39,39 +39,39 @@ function SuccessContent() {
   return (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/10">
-          <CheckCircle className="h-8 w-8 text-white" />
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-black/5">
+          <CheckCircle className="h-8 w-8 text-neutral-900" />
         </div>
-        <h1 className="mt-4 text-2xl font-bold text-white">
+        <h1 className="mt-4 text-2xl font-bold text-neutral-900">
           Payment successful!
         </h1>
-        <p className="mt-2 text-neutral-400">
+        <p className="mt-2 text-neutral-600">
           Thank you for your booking. Here is your personal Zoom access.
         </p>
       </div>
 
       {loading ? (
-        <Card className="bg-[#0A0A0A] border-white/10">
+        <Card className="bg-neutral-50 border-neutral-200">
           <CardContent className="flex flex-col items-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-white" />
-            <p className="mt-4 text-sm text-neutral-400">
+            <Loader2 className="h-8 w-8 animate-spin text-neutral-900" />
+            <p className="mt-4 text-sm text-neutral-600">
               Generating your secure access...
             </p>
           </CardContent>
         </Card>
       ) : accessCode ? (
-        <Card className="bg-[#0A0A0A] border-white/10">
+        <Card className="bg-neutral-50 border-neutral-200">
           <CardHeader>
-            <CardTitle className="text-white text-lg">
+            <CardTitle className="text-neutral-900 text-lg">
               Your Zoom access
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="rounded-lg bg-black border border-white/10 p-4 space-y-2">
+            <div className="rounded-lg bg-white border border-neutral-200 p-4 space-y-2">
               <p className="text-xs text-neutral-500 uppercase font-semibold">
                 Unique access code
               </p>
-              <code className="block text-lg font-mono text-white break-all">
+              <code className="block text-lg font-mono text-neutral-900 break-all">
                 {accessCode.code}
               </code>
             </div>
@@ -79,7 +79,7 @@ function SuccessContent() {
             {accessCode.zoomJoinUrl && (
               <Button
                 asChild
-                className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
+                className="w-full bg-neutral-900 text-white hover:bg-neutral-800 rounded-full"
               >
                 <a
                   href={accessCode.zoomJoinUrl}
@@ -98,15 +98,15 @@ function SuccessContent() {
           </CardContent>
         </Card>
       ) : (
-        <Card className="bg-[#0A0A0A] border-white/10">
+        <Card className="bg-neutral-50 border-neutral-200">
           <CardContent className="py-8 text-center">
-            <p className="text-neutral-400">
+            <p className="text-neutral-600">
               Your access will be available shortly. You will also receive a
               confirmation email.
             </p>
             <Button
               asChild
-              className="mt-4 bg-white text-black hover:bg-neutral-200 rounded-full"
+              className="mt-4 bg-neutral-900 text-white hover:bg-neutral-800 rounded-full"
             >
               <a href="/dashboard">Go to my dashboard</a>
             </Button>
@@ -119,14 +119,14 @@ function SuccessContent() {
 
 export default function SuccessPage() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-white flex items-center justify-center px-6 py-12">
       <Suspense
         fallback={
           <div className="w-full max-w-md">
-            <Card className="bg-[#0A0A0A] border-white/10">
+            <Card className="bg-neutral-50 border-neutral-200">
               <CardContent className="flex flex-col items-center py-12">
-                <Loader2 className="h-8 w-8 animate-spin text-white" />
-                <p className="mt-4 text-sm text-neutral-400">Loading...</p>
+                <Loader2 className="h-8 w-8 animate-spin text-neutral-900" />
+                <p className="mt-4 text-sm text-neutral-600">Loading...</p>
               </CardContent>
             </Card>
           </div>

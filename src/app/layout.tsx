@@ -25,8 +25,8 @@ export default function RootLayout({
     !process.env.ZOOM_CLIENT_ID;
 
   return (
-    <html lang="en" className={`${geistSans.variable} h-full antialiased dark`}>
-      <body className="min-h-full flex flex-col font-sans bg-black text-white m-0 p-0">
+    <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-sans bg-white text-neutral-900 m-0 p-0">
         {children}
         {isDemo && <DemoBanner />}
       </body>

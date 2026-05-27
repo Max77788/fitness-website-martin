@@ -35,10 +35,10 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-black py-32 sm:py-40">
+    <section id="how-it-works" className="bg-white py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             How it works
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-500">
@@ -50,13 +50,13 @@ export default function HowItWorks() {
           {steps.map((step) => (
             <div key={step.number} className="relative">
               <div className="flex flex-col items-center text-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-black">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-neutral-900 text-white">
                   <step.icon className="h-6 w-6" />
                 </div>
                 <span className="mt-4 text-xs font-bold uppercase tracking-wider text-neutral-500">
                   Step {step.number}
                 </span>
-                <h3 className="mt-2 text-base font-semibold text-white">
+                <h3 className="mt-2 text-base font-semibold text-neutral-900">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-neutral-500">

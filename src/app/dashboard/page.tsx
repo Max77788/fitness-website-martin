@@ -80,18 +80,18 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-white" />
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-neutral-900" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black py-12 px-6">
+    <div className="min-h-screen bg-white py-12 px-6">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white">My dashboard</h1>
-          <p className="mt-2 text-neutral-400">
+          <h1 className="text-2xl font-bold text-neutral-900">My dashboard</h1>
+          <p className="mt-2 text-neutral-600">
             Manage your bookings and access your Zoom sessions.
           </p>
         </div>
@@ -104,18 +104,18 @@ export default function DashboardPage() {
         )}
 
         {payments.length === 0 ? (
-          <Card className="bg-[#0A0A0A] border-white/10">
+          <Card className="bg-neutral-50 border-neutral-200">
             <CardContent className="py-12 text-center">
-              <Video className="mx-auto h-12 w-12 text-neutral-600" />
-              <h3 className="mt-4 text-lg font-medium text-white">
+              <Video className="mx-auto h-12 w-12 text-neutral-400" />
+              <h3 className="mt-4 text-lg font-medium text-neutral-900">
                 No bookings yet
               </h3>
-              <p className="mt-2 text-sm text-neutral-400">
+              <p className="mt-2 text-sm text-neutral-600">
                 You haven&apos;t booked a session yet.
               </p>
               <Button
                 asChild
-                className="mt-6 bg-white text-black hover:bg-neutral-200 rounded-full"
+                className="mt-6 bg-neutral-900 text-white hover:bg-neutral-800 rounded-full"
               >
                 <a href="/#pricing">Book a session</a>
               </Button>
@@ -126,15 +126,15 @@ export default function DashboardPage() {
             {payments.map((payment) => (
               <Card
                 key={payment.id}
-                className="bg-[#0A0A0A] border-white/10"
+                className="bg-neutral-50 border-neutral-200"
               >
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-white">
+                      <CardTitle className="text-neutral-900">
                         {payment.plan.name}
                       </CardTitle>
-                      <CardDescription className="text-neutral-400 mt-1">
+                      <CardDescription className="text-neutral-600 mt-1">
                         {payment.plan.description}
                       </CardDescription>
                     </div>
@@ -146,8 +146,8 @@ export default function DashboardPage() {
                       }
                       className={
                         payment.status === "completed"
-                          ? "bg-white text-black"
-                          : "bg-white/10 text-neutral-300"
+                          ? "bg-neutral-900 text-white"
+                          : "bg-black/5 text-neutral-700"
                       }
                     >
                       {payment.status === "completed" ? "Paid" : payment.status}
@@ -156,7 +156,7 @@ export default function DashboardPage() {
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  <div className="flex flex-wrap gap-4 text-sm text-neutral-400">
+                  <div className="flex flex-wrap gap-4 text-sm text-neutral-600">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
                       {new Date(payment.createdAt).toLocaleDateString("en-US")}
@@ -169,14 +169,14 @@ export default function DashboardPage() {
 
                   {payment.accessCode && (
                     <>
-                      <Separator className="bg-white/10" />
+                      <Separator className="bg-neutral-200" />
 
                       <div className="space-y-4">
-                        <h4 className="text-sm font-semibold text-white">
+                        <h4 className="text-sm font-semibold text-neutral-900">
                           Your Zoom access
                         </h4>
 
-                        <div className="rounded-lg bg-black border border-white/10 p-4 space-y-3">
+                        <div className="rounded-lg bg-white border border-neutral-200 p-4 space-y-3">
                           <div className="flex items-center justify-between">
                             <span className="text-xs text-neutral-500 uppercase font-semibold">
                               Unique access code
@@ -190,7 +190,7 @@ export default function DashboardPage() {
                                   payment.accessCode!.id
                                 )
                               }
-                              className="text-neutral-400 hover:text-white"
+                              className="text-neutral-600 hover:text-neutral-900"
                             >
                               {copiedId === payment.accessCode.id ? (
                                 "Copied!"
@@ -202,7 +202,7 @@ export default function DashboardPage() {
                               )}
                             </Button>
                           </div>
-                          <code className="block text-sm font-mono text-white break-all">
+                          <code className="block text-sm font-mono text-neutral-900 break-all">
                             {payment.accessCode.code}
                           </code>
                         </div>
@@ -210,7 +210,7 @@ export default function DashboardPage() {
                         {payment.accessCode.zoomJoinUrl && (
                           <Button
                             asChild
-                            className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
+                            className="w-full bg-neutral-900 text-white hover:bg-neutral-800 rounded-full"
                           >
                             <a
                               href={payment.accessCode.zoomJoinUrl}

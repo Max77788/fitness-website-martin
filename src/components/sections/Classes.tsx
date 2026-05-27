@@ -37,10 +37,10 @@ const classes = [
 
 export default function Classes() {
   return (
-    <section className="bg-black py-32 sm:py-40">
+    <section className="bg-white py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             Our classes
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-500">
@@ -53,24 +53,24 @@ export default function Classes() {
           {classes.map((c) => (
             <div
               key={c.name}
-              className="rounded-2xl border border-white/10 bg-[#0A0A0A] p-8 transition hover:border-white/20"
+              className="rounded-2xl border border-neutral-200 bg-neutral-50 p-8 transition hover:border-neutral-300"
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-black">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-900 text-white">
                   <c.icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white">
+                  <h3 className="text-lg font-semibold text-neutral-900">
                     {c.name}
                   </h3>
                   <div className="mt-1 flex items-center gap-3 text-xs text-neutral-500">
                     <span>{c.level}</span>
-                    <span className="h-1 w-1 rounded-full bg-neutral-700" />
+                    <span className="h-1 w-1 rounded-full bg-neutral-300" />
                     <span>{c.duration}</span>
                   </div>
                 </div>
               </div>
-              <p className="mt-4 text-sm leading-6 text-neutral-400">
+              <p className="mt-4 text-sm leading-6 text-neutral-600">
                 {c.description}
               </p>
             </div>

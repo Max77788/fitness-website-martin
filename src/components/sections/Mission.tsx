@@ -23,10 +23,10 @@ const values = [
 
 export default function Mission() {
   return (
-    <section className="bg-[#0A0A0A] py-32 sm:py-40">
+    <section className="bg-neutral-50 py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             Our mission
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-500">
@@ -39,10 +39,10 @@ export default function Mission() {
         <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-12 sm:grid-cols-3">
           {values.map((value) => (
             <div key={value.title} className="text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10">
-                <value.icon className="h-7 w-7 text-white" />
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-black/5 ring-1 ring-black/5">
+                <value.icon className="h-7 w-7 text-neutral-900" />
               </div>
-              <h3 className="mt-6 text-base font-semibold text-white">
+              <h3 className="mt-6 text-base font-semibold text-neutral-900">
                 {value.title}
               </h3>
               <p className="mt-3 text-sm leading-6 text-neutral-500">

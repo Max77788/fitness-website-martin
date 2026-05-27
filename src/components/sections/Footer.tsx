@@ -4,12 +4,12 @@ import { Dumbbell } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-black py-12 border-t border-white/10">
+    <footer id="contact" className="bg-white py-12 border-t border-neutral-200">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
-            <a href="#" className="flex items-center gap-2 text-white">
-              <Dumbbell className="h-6 w-6 text-white" />
+            <a href="#" className="flex items-center gap-2 text-neutral-900">
+              <Dumbbell className="h-6 w-6 text-neutral-900" />
               <span className="text-lg font-bold tracking-tight">FitLive</span>
             </a>
             <p className="mt-4 text-sm text-neutral-500">
@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Contact</h3>
+            <h3 className="text-sm font-semibold text-neutral-900">Contact</h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-500">
               <li>Email: contact@fitlivecoaching.com</li>
               <li>Phone: +1 (555) 000-0000</li>
@@ -28,7 +28,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white">Hours</h3>
+            <h3 className="text-sm font-semibold text-neutral-900">Hours</h3>
             <ul className="mt-4 space-y-2 text-sm text-neutral-500">
               <li>Mon - Fri: 7am - 9pm EST</li>
               <li>Saturday: 9am - 5pm EST</li>
@@ -37,8 +37,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8 text-center">
-          <p className="text-xs text-neutral-600">
+        <div className="mt-12 border-t border-neutral-200 pt-8 text-center">
+          <p className="text-xs text-neutral-400">
             &copy; {new Date().getFullYear()} FitLive. All rights reserved.
           </p>
         </div>

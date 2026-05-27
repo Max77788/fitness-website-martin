@@ -40,10 +40,10 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#0A0A0A] py-32 sm:py-40">
+    <section className="bg-neutral-50 py-32 sm:py-40">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             Frequently asked questions
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-500">
@@ -56,13 +56,13 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="rounded-xl border border-white/10 bg-black"
+              className="rounded-xl border border-neutral-200 bg-white"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="flex w-full items-center justify-between px-6 py-5 text-left"
               >
-                <span className="text-sm font-semibold text-white">
+                <span className="text-sm font-semibold text-neutral-900">
                   {faq.question}
                 </span>
                 <ChevronDown
@@ -73,7 +73,7 @@ export default function FAQ() {
               </button>
               {openIndex === i && (
                 <div className="px-6 pb-5">
-                  <p className="text-sm leading-6 text-neutral-400">
+                  <p className="text-sm leading-6 text-neutral-600">
                     {faq.answer}
                   </p>
                 </div>

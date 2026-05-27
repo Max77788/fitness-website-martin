@@ -102,10 +102,10 @@ export default function Pricing() {
   };
 
   return (
-    <section id="pricing" className="bg-black py-32 sm:py-40">
+    <section id="pricing" className="bg-white py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             Our plans
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-500">
@@ -120,36 +120,36 @@ export default function Pricing() {
               key={plan.id}
               className={`relative flex flex-col ${
                 plan.popular
-                  ? "bg-white border-black/10 ring-1 ring-black/10 overflow-visible"
-                  : "border-white/10 bg-[#0A0A0A]"
+                  ? "bg-neutral-900 border-neutral-800 ring-1 ring-neutral-800 overflow-visible"
+                  : "border-neutral-200 bg-neutral-50"
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-black px-3 py-1 text-xs font-medium text-white">
+                  <span className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-medium text-neutral-900 ring-1 ring-neutral-700">
                     Most popular
                   </span>
                 </div>
               )}
 
               <CardHeader>
-                <CardTitle className={`text-xl ${plan.popular ? "text-black" : "text-white"}`}>{plan.name}</CardTitle>
-                <p className={`text-sm ${plan.popular ? "text-neutral-500" : "text-neutral-500"}`}>{plan.description}</p>
+                <CardTitle className={`text-xl ${plan.popular ? "text-white" : "text-neutral-900"}`}>{plan.name}</CardTitle>
+                <p className={`text-sm ${plan.popular ? "text-neutral-400" : "text-neutral-500"}`}>{plan.description}</p>
                 <div className="mt-4 flex items-baseline gap-x-1">
-                  <span className={`text-4xl font-bold tracking-tight ${plan.popular ? "text-black" : "text-white"}`}>
+                  <span className={`text-4xl font-bold tracking-tight ${plan.popular ? "text-white" : "text-neutral-900"}`}>
                     ${plan.price}
                   </span>
-                  <span className="text-sm text-neutral-500">
+                  <span className={`text-sm ${plan.popular ? "text-neutral-400" : "text-neutral-500"}`}>
                     /{plan.interval}
                   </span>
                 </div>
               </CardHeader>
 
               <CardContent className="flex flex-1 flex-col">
-                <ul className={`space-y-3 text-sm leading-6 ${plan.popular ? "text-neutral-600" : "text-neutral-400"}`}>
+                <ul className={`space-y-3 text-sm leading-6 ${plan.popular ? "text-neutral-300" : "text-neutral-600"}`}>
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-x-3">
-                      <Check className={`h-5 w-5 flex-shrink-0 ${plan.popular ? "text-black" : "text-white"}`} />
+                      <Check className={`h-5 w-5 flex-shrink-0 ${plan.popular ? "text-white" : "text-neutral-900"}`} />
                       {feature}
                     </li>
                   ))}
@@ -159,8 +159,8 @@ export default function Pricing() {
                   onClick={() => setSelectedPlan(plan)}
                   className={`mt-8 w-full rounded-full ${
                     plan.popular
-                      ? "bg-black text-white hover:bg-neutral-800"
-                      : "bg-white/10 text-white hover:bg-white/20"
+                      ? "bg-white text-neutral-900 hover:bg-neutral-200"
+                      : "bg-neutral-900 text-white hover:bg-neutral-800"
                   }`}
                 >
                   Choose this plan
@@ -172,41 +172,41 @@ export default function Pricing() {
       </div>
 
       <Dialog open={!!selectedPlan} onOpenChange={() => setSelectedPlan(null)}>
-        <DialogContent className="sm:max-w-md border-white/10 bg-[#0A0A0A]">
+        <DialogContent className="sm:max-w-md border-neutral-200 bg-white">
           <DialogHeader>
-            <DialogTitle className="text-white">
+            <DialogTitle className="text-neutral-900">
               Book: {selectedPlan?.name} (${selectedPlan?.price})
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-neutral-300">Full name</Label>
+              <Label htmlFor="name" className="text-neutral-700">Full name</Label>
               <Input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="John Smith"
-                className="border-white/10 bg-black text-white placeholder:text-neutral-600"
+                className="border-neutral-200 bg-white text-neutral-900 placeholder:text-neutral-400"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-neutral-300">Email</Label>
+              <Label htmlFor="email" className="text-neutral-700">Email</Label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="john@example.com"
-                className="border-white/10 bg-black text-white placeholder:text-neutral-600"
+                className="border-neutral-200 bg-white text-neutral-900 placeholder:text-neutral-400"
               />
             </div>
 
             <Button
               onClick={handleCheckout}
               disabled={loading || !email || !name}
-              className="w-full bg-white text-black hover:bg-neutral-200 rounded-full"
+              className="w-full bg-neutral-900 text-white hover:bg-neutral-800 rounded-full"
             >
               {loading ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />

@@ -41,10 +41,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-black py-32 sm:py-40">
+    <section className="bg-white py-32 sm:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-5xl">
             What our clients say
           </h2>
           <p className="mt-6 text-lg leading-8 text-neutral-500">
@@ -57,25 +57,25 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="mb-6 break-inside-avoid rounded-2xl border border-white/10 bg-[#0A0A0A] p-6"
+              className="mb-6 break-inside-avoid rounded-2xl border border-neutral-200 bg-neutral-50 p-6"
             >
               <div className="flex items-center gap-1">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="h-4 w-4 fill-white text-white"
+                    className="h-4 w-4 fill-neutral-900 text-neutral-900"
                   />
                 ))}
               </div>
-              <p className="mt-4 text-sm leading-6 text-neutral-400">
+              <p className="mt-4 text-sm leading-6 text-neutral-600">
                 &ldquo;{t.body}&rdquo;
               </p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900 text-sm font-bold text-white">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">{t.name}</p>
+                  <p className="text-sm font-semibold text-neutral-900">{t.name}</p>
                   <p className="text-xs text-neutral-500">{t.role}</p>
                 </div>
               </div>
