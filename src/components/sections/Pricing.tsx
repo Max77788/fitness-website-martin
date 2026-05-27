@@ -120,7 +120,7 @@ export default function Pricing() {
               key={plan.id}
               className={`relative flex flex-col border-white/10 bg-[#0A0A0A] ${
                 plan.popular
-                  ? "ring-1 ring-white/20"
+                  ? "ring-1 ring-white/20 overflow-visible"
                   : ""
               }`}
             >
